@@ -36,3 +36,25 @@ System.Console.WriteLine("Letters in last name: " + numberOfLetters.ToString());
 // Student ID and Locker Number
 System.Console.WriteLine("Student ID: " + rng.Next(100000, 1000000));
 System.Console.WriteLine("Locker: " + rng.Next(1, 501));
+
+// Asks for dorm and class coordinates, as well as student's walking speed.
+System.Console.Write("Dorm x: ");
+int dormX = Convert.ToInt32(Console.ReadLine());
+System.Console.Write("Dorm y: ");
+int dormY = Convert.ToInt32(Console.ReadLine());
+System.Console.Write("Classroom x: ");
+int classX = Convert.ToInt32(Console.ReadLine());
+System.Console.Write("Classroom y: ");
+int classY = Convert.ToInt32(Console.ReadLine());
+System.Console.Write("Walking speed in feet per second: ");
+double feetPerSecond = Convert.ToDouble(Console.ReadLine());
+
+// Calculates distance and walk time.
+double distance = Math.Sqrt(Math.Pow(classX - dormX, 2) + Math.Pow(classY - dormY, 2));
+double walkTime = Math.Round(distance / feetPerSecond);
+int walkMinutes = Convert.ToInt32(walkTime) / 60;
+int walkSeconds = Convert.ToInt32(walkTime) % 60;
+
+// Outputs distance and walk time
+System.Console.WriteLine("Distance: " + distance.ToString("F1") + " feet");
+System.Console.WriteLine("Walk time: " + walkMinutes.ToString() + " minutes and " + walkSeconds.ToString() + " seconds.");
