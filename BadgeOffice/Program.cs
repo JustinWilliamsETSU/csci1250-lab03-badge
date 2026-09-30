@@ -32,3 +32,7 @@ System.Console.WriteLine("Name on badge: " + fullName.ToUpper());
 System.Console.WriteLine("Username: " + userName.ToString());
 System.Console.WriteLine("Initials: " + firstLetter.ToUpper() + "." + lastLetter.ToUpper() + ".");
 System.Console.WriteLine("Letters in last name: " + numberOfLetters.ToString());
+
+// Student ID and Locker Number
+System.Console.WriteLine("Student ID: " + rng.Next(100000, 1000000));
+System.Console.WriteLine("Locker: " + rng.Next(1, 501));
