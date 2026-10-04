@@ -10,7 +10,7 @@
 Random rng = new Random();
 
 // Gets the user's full name
-System.Console.Write("Please input your first and last name with a space inbetween: ");
+System.Console.Write("Full name: ");
 string fullName = Console.ReadLine();
 
 // Generates the username based on their full name
@@ -34,11 +34,13 @@ System.Console.WriteLine("Initials: " + firstLetter.ToUpper() + "." + lastLetter
 System.Console.WriteLine("Letters in last name: " + numberOfLetters.ToString());
 
 // Student ID and Locker Number
-System.Console.WriteLine("Student ID: " + rng.Next(100000, 1000000));
-System.Console.WriteLine("Locker: " + rng.Next(1, 501));
+int studentID = rng.Next(100000, 1000000);
+int lockerID = rng.Next(1, 501);
+System.Console.WriteLine("\nStudent ID: " + studentID);
+System.Console.WriteLine("Locker: " + lockerID);
 
 // Asks for dorm and class coordinates, as well as student's walking speed.
-System.Console.Write("Dorm x: ");
+System.Console.Write("\nDorm x: ");
 int dormX = Convert.ToInt32(Console.ReadLine());
 System.Console.Write("Dorm y: ");
 int dormY = Convert.ToInt32(Console.ReadLine());
@@ -58,3 +60,25 @@ int walkSeconds = Convert.ToInt32(walkTime) % 60;
 // Outputs distance and walk time
 System.Console.WriteLine("Distance: " + distance.ToString("F1") + " feet");
 System.Console.WriteLine("Walk time: " + walkMinutes.ToString() + " minutes and " + walkSeconds.ToString() + " seconds.");
+
+// Check digit calculation and get padding length
+int checkDigit = studentID % 9;
+
+/* This part ended up being unused, but I was trying to figure out if there was some way to dynamically get the length of each section and figure out the padding from there, but I found a much easier solution.
+int namePadding = fullName.Length;
+int userPadding = userName.Length;
+int idPadding = studentID.ToString().Length + 2;
+int lockerPadding = lockerID.ToString().Length;
+int walkPadding = walkMinutes.ToString().Length + walkSeconds.ToString().Length;
+*/
+
+// Final Badge Output
+System.Console.WriteLine("\n==================================");
+System.Console.WriteLine("        ETSU Student Badge");
+System.Console.WriteLine("==================================");
+System.Console.WriteLine("NAME".PadRight(10) + fullName.ToString());
+System.Console.WriteLine("USERNAME".PadRight(10) + userName.ToString());
+System.Console.WriteLine("ID".PadRight(10) + studentID.ToString() + "-" + checkDigit);
+System.Console.WriteLine("LOCKER".PadRight(10) + lockerID.ToString());
+System.Console.WriteLine("WALK".PadRight(10) + walkMinutes.ToString() + " min " + walkSeconds.ToString() + " sec");
+System.Console.WriteLine("==================================");
